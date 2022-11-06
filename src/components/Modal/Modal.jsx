@@ -1,0 +1,41 @@
+import { Component } from 'react';
+import css from './Modal.module.css';
+
+export class Modal extends Component {
+  onEscape = e => {
+    console.log('keyCode: ', e);
+    if (e.code === 'Escape') {
+      this.props.modalClose();
+    }
+  };
+
+  onClickOverlay = e => {
+    e.target === e.currentTarget && this.props.modalClose();
+  };
+
+  componentDidMount() {
+    console.log('modal open!');
+    console.log(this.props);
+    window.addEventListener('keydown', this.onEscape);
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate prevProps: ', prevProps);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.onEscape);
+  }
+
+  render() {
+    const { onLoadingFinish } = this.props;
+    const { modalItem } = this.props;
+    const { largeImageURL, tags } = modalItem;
+    return (
+      <div className={css.overlay} onClick={this.onClickOverlay}>
+        <div className={css.modal}>
+          <img src={largeImageURL} alt={tags} onLoad={onLoadingFinish}></img>
+        </div>
+      </div>
+    );
+  }
+}
