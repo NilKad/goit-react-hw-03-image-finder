@@ -1,7 +1,17 @@
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 import css from './Modal.module.css';
 
 export class Modal extends Component {
+  static PrpoTypes = {
+    modalClose: PropTypes.func.isRequired,
+    onLoadingFinish: PropTypes.func.isRequired,
+    modalItem: PropTypes.shape({
+      largeImageURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+    }),
+  };
+
   onEscape = e => {
     console.log('keyCode: ', e);
     if (e.code === 'Escape') {

@@ -1,4 +1,5 @@
 import API from 'axios';
+import PropTypes from 'prop-types';
 
 export const fetchApi = async ({
   searchString,
@@ -28,4 +29,11 @@ export const fetchApi = async ({
   } catch (error) {
     console.log(error);
   }
+};
+
+fetchApi.propTypes = {
+  searchString: PropTypes.string.isRequired,
+  pageptnr: PropTypes.number.isRequired,
+  addItemGallery: PropTypes.string.isRequired,
+  setTotalPage: PropTypes.number.isRequired,
 };

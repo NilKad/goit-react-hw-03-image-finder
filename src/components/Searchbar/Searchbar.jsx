@@ -1,4 +1,5 @@
 import css from './Searchbar.module.css';
+import PropTypes from 'prop-types';
 
 export const Searchbar = ({ seacrhSubmit }) => {
   return (
@@ -19,4 +20,8 @@ export const Searchbar = ({ seacrhSubmit }) => {
       </form>
     </header>
   );
+};
+
+Searchbar.propTypes = {
+  seacrhSubmit: PropTypes.func.isRequired,
 };

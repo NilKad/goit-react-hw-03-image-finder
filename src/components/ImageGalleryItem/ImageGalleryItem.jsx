@@ -1,4 +1,5 @@
 import css from './ImageGalleryItem.module.css';
+import PropTypes from 'prop-types';
 
 export const ImageGalleryItem = ({ galleryItem, modalOpen }) => {
   const { webformatURL, tags, largeImageURL } = galleryItem;
@@ -17,4 +18,15 @@ export const ImageGalleryItem = ({ galleryItem, modalOpen }) => {
       }
     </li>
   );
+};
+
+ImageGalleryItem.propTypes = {
+  galleryItem: PropTypes.arrayOf(
+    PropTypes.shape({
+      webformatURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+  modalOpen: PropTypes.func.isRequired,
 };
