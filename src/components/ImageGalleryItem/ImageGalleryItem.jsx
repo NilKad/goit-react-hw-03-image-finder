@@ -21,12 +21,10 @@ export const ImageGalleryItem = ({ galleryItem, modalOpen }) => {
 };
 
 ImageGalleryItem.propTypes = {
-  galleryItem: PropTypes.arrayOf(
-    PropTypes.shape({
-      webformatURL: PropTypes.string.isRequired,
-      tags: PropTypes.string.isRequired,
-      largeImageURL: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
+  galleryItem: PropTypes.shape({
+    webformatURL: PropTypes.string.isRequired,
+    tags: PropTypes.string.isRequired,
+    largeImageURL: PropTypes.string.isRequired,
+  }).isRequired,
   modalOpen: PropTypes.func.isRequired,
 };
