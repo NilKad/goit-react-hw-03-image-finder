@@ -60,7 +60,7 @@ export default class App extends React.Component {
     this.setState({ isLoading: false });
   };
   componentDidUpdate(prevProps, prevState) {
-    const { searchString, page, totalPage, isLoading } = this.state;
+    const { searchString, page, totalPage } = this.state;
     if (prevState.searchString !== searchString || prevState.page !== page) {
       this.setState({ isLoading: true });
       fetchApi({
