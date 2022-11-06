@@ -54,8 +54,11 @@ export default class App extends React.Component {
   };
 
   loadingFinish = e => {
-    console.log('!!!loadingFinish');
-    this.setState({ isLoading: false });
+    if (this.state.isLoading) {
+      // console.log('!!!loadingFinish');
+      this.setState({ isLoading: false });
+    }
+    // this.state.isLoading && this.setState({ isLoading: false });
   };
   componentDidUpdate(prevProps, prevState) {
     const { searchString, page, totalPage, gallery } = this.state;
