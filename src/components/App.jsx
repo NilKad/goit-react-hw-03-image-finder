@@ -33,7 +33,6 @@ export default class App extends React.Component {
       : this.setState(prevState => ({
           gallery: [...prevState.gallery, ...galleryList],
         }));
-    this.state.gallery.length === 0 && this.setState({ isLoading: false });
   };
 
   setTotalPage = total => this.setState({ totalPage: total });
@@ -47,8 +46,7 @@ export default class App extends React.Component {
 
   modalSetItem = item => {
     // console.log('modalSetItem open!!!!!!');
-    this.setState({ isLoading: true });
-    this.setState({ modalItem: item });
+    this.setState({ isLoading: true, modalItem: item });
   };
 
   modalClose = e => {
@@ -60,7 +58,7 @@ export default class App extends React.Component {
     this.setState({ isLoading: false });
   };
   componentDidUpdate(prevProps, prevState) {
-    const { searchString, page, totalPage } = this.state;
+    const { searchString, page, totalPage, gallery } = this.state;
     if (prevState.searchString !== searchString || prevState.page !== page) {
       this.setState({ isLoading: true });
       fetchApi({
@@ -75,10 +73,11 @@ export default class App extends React.Component {
         ? this.setState({ isHaveLoadMore: false })
         : this.setState({ isHaveLoadMore: true });
     }
-    // if (isLoading) {
-    //   this.setState({ isLoading: false });
-    // }
+    if (gallery.length === 0 && prevState.gallery !== gallery) {
+      this.setState({ isLoading: false });
+    }
   }
+
   render() {
     const { gallery, isHaveLoadMore, modalItem, isLoading } = this.state;
     return (
