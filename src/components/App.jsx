@@ -44,10 +44,6 @@ export default class App extends React.Component {
         }));
   };
 
-  // ({
-  //           gallery: [...prevState.gallery, ...galleryList],
-  //         })
-
   setTotalPage = total => this.setState({ totalPage: total });
 
   onClickButtonLoadMore = () => {
