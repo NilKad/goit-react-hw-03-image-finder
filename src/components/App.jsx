@@ -25,15 +25,28 @@ export default class App extends React.Component {
     window.scrollTo(0, 0);
   };
 
+  galleryFilter = list => {
+    return list.map(({ id, webformatURL, tags, largeImageURL }) => ({
+      id,
+      webformatURL,
+      tags,
+      largeImageURL,
+    }));
+  };
+
   addItemGallery = galleryList => {
     const { page } = this.state;
     console.log('update gallery');
     page === 1
-      ? this.setState({ gallery: galleryList })
+      ? this.setState({ gallery: this.galleryFilter(galleryList) })
       : this.setState(prevState => ({
-          gallery: [...prevState.gallery, ...galleryList],
+          gallery: [...prevState.gallery, ...this.galleryFilter(galleryList)],
         }));
   };
+
+  // ({
+  //           gallery: [...prevState.gallery, ...galleryList],
+  //         })
 
   setTotalPage = total => this.setState({ totalPage: total });
 

@@ -28,9 +28,6 @@ export class Modal extends Component {
     console.log(this.props);
     window.addEventListener('keydown', this.onEscape);
   }
-  componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate prevProps: ', prevProps);
-  }
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.onEscape);
