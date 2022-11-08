@@ -109,7 +109,7 @@ export default class App extends React.Component {
         {modalItem && (
           <Modal
             onLoadingFinish={this.loadingFinish}
-            modalItem={this.state.modalItem}
+            modalItem={modalItem}
             modalClose={this.modalClose}
           />
         )}
