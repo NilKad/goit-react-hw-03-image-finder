@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 export const ImageGalleryItem = ({ galleryItem, modalOpen }) => {
   const { webformatURL, tags, largeImageURL } = galleryItem;
 
-  // console.log(galleryItem);
-
   return (
     <li className={css.imageGalleryItem}>
       {
